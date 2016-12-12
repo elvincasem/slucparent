@@ -829,11 +829,80 @@ function firstresult(){
 		console.log(data);
 		
 		if(parseInt(data)==0){
+		
 		$$('#displayresultblank').append('<p>Sorry, there is no record of a student with this ID Number in the system.</p>');
 		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="#" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue" disabled>Proceed</a></p></div>');
+		
+		}else if(datas.course == "BAT"){
+		
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>Bachelor of Agricultural Technology<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		
+		}else if(datas.course == "BAE"){
+		
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.A. in English<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		
+		}else if(datas.course == "BAF"){
+		
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.A. in Filipino<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		
+		}else if(datas.course == "BSA"){
+		
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Agriculture<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		
+		}else if(datas.course == "BSB"){
+		
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Biology<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		
+		}else if(datas.course == "BSCSL"){
+		
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Computer Science (Ladderized)<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		
+		}else if(datas.course == "BSCSS"){
+		
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Computer Science (Straight)<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		
+		}else if(datas.course == "BSEE"){
+		
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Elementary Education<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		
+		}else if(datas.course == "BSM"){
+		
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Mathematics<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		
+		}else if(datas.course == "BSMW"){
+		
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Midwifery<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		
+		}else if(datas.course == "BSN"){
+		
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Nursing<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		
+		}else if(datas.course == "BSP"){
+		
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Psychology<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		
+		}else if(datas.course == "BSSE"){
+		
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Secondary Education<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		
 		}else{
+		
 		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>'+datas.course+'<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
 		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		
 		}
 		
 	},JSON);

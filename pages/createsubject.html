@@ -12,11 +12,22 @@
     <!--<div class="content-block-title">With Floating Labels</div>-->
     <div class="list-block inputs-list">
       <ul>
-        
 		
-		
-		
-		<li>
+		<!--<li><a href="#" class="item-link smart-select">
+            <select name="fruits" id="subjecttitle">
+			  <div id="displayallcourses"></div>
+				<option value="subjecta">Subject A</option>
+				<option value="subjectb">Subject B</option>
+				<option value="usbjectc">Subject C</option>
+			
+			</select>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Subject Title:</div>
+              </div>
+            </div></a></li>-->
+			
+		<!--<li>
           <div class="item-content">
             <div class="item-inner"> 
               <div class="item-title floating-label">Subject Title:</div>
@@ -25,7 +36,7 @@
               </div>
             </div>
           </div>
-        </li>
+        </li>-->
 		
 		<li><a href="#" class="item-link smart-select">
             <select name="fruits" id="subjectsy">
@@ -52,16 +63,16 @@
 		
 		<li><a href="#" class="item-link smart-select">
             <select name="fruits" id="subjectdepartment">
-              <option value="CAS" selected="selected">College of Arts and Sciences</option>
-              <option value="CCS">College of Computer Sciences</option>
-              <option value="COE">College of Education</option>
-              <option value="IA">Institute of Agricultutre</option>
-              <option value="ICHAMS">Institute of Community Health and Allied Medical Sciences</option>
-              <option value="IF">Institute of Fisheries</option>
+              <option value="CE" selected="selected">CE</option>
+			  <option value="CAS">CAS</option>
+			  <option value="CCS">CCS</option>
+			  <option value="ICHAMS">ICHAMS</option>
+			  <option value="IA">IA</option>
+			  <option value="IF">IF</option>
             </select>
             <div class="item-content">
               <div class="item-inner">
-                <div class="item-title">Department:</div>
+                <div class="item-title">College:</div>
               </div>
             </div></a></li>
 		
@@ -109,20 +120,65 @@
               </div>
             </div></a></li>-->
 		
-		<li>
-          <div class="item-content">
-            <div class="item-inner"> 
-              <div class="item-title floating-label">Year and Section:</div>
-              <div class="item-input">
-                <input type="text" placeholder="" id="subjectys"/>
+		<li><a href="#" class="item-link smart-select">
+            <select name="fruits" id="subjecty">
+              <option value="I">I</option>
+              <option value="II">II</option>
+              <option value="III">III</option>
+              <option value="IV">IV</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Year:</div>
               </div>
-            </div>
-          </div>
-        </li>
-
+            </div></a></li>
+		
+		<li><a href="#" class="item-link smart-select">
+            <select name="fruits" id="subjects">
+              <option value="A">A</option>
+              <option value="B">B</option>
+              <option value="C">C</option>
+              <option value="D">D</option>
+              <option value="E">E</option>
+              <option value="F">F</option>
+              <option value="G">G</option>
+              <option value="H">H</option>
+              <option value="I">I</option>
+              <option value="J">J</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+            <div class="item-content">
+              <div class="item-inner">
+                <div class="item-title">Section:</div>
+              </div>
+            </div></a></li>
+			
+			<li>
+			  <a href="pages/coursetitle.html" class="item-link item-content" style="height: 80px;">
+				<div class="item-inner">
+				  <div class="item-title">Subject Title:</div>
+				  <div id="chosentitle"></div>
+				  <!--<div class="item-after" id="chosentitle"></div>-->
+				</div>
+			  </a>
+			</li>
+			
       </ul>
     </div>
-
+	
+	
 	
 	<div class="content-block">
 		<!--<a href="#" class="button button-raised button-fill color-pink ks-generate-page" onclick="loginstudent();";>-->
@@ -131,6 +187,7 @@
 			Create Subject
 		</a>
 		<input type="hidden" id="teacher_id" value="">
+		<div id="hiddeninputs"></div>
 	</div>
 	
   </div>

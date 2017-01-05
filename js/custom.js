@@ -16,9 +16,54 @@ $$(document).on('pageAfterAnimation','.page[data-page="editscore"]',function(e){
 })
 
 $$(document).on('pageAfterAnimation','.page[data-page="studenthome"]',function(e){
+	
 	var studentprofile = JSON.parse(localStorage.getItem("studentprofile"));
 	document.getElementById("student_name").innerHTML = studentprofile.name;
-	//alert("test");
+	var studid = studentprofile.studid;
+	
+	$$.post(global_url, {action: 'studentprofile',studentid: studid}, function (data) {
+		
+		document.getElementById('displayprofile').innerHTML="";
+		console.log(data);
+		var datas = JSON.parse(data);
+		console.log(datas);
+			
+		for(var i = 0; i<datas.length; i++){
+		
+			if(datas[i].course == "BAT"){
+				$$('#displayprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>Bachelor of Agricultural Technology<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BAE"){
+				$$('#displayprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.A. in English<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BAF"){
+				$$('#displayprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.A. in Filipino<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSA"){
+				$$('#displayprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Agriculture<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSB"){
+				$$('#displayprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Biology<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSCSL"){
+				$$('#displayprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Computer Science (Ladderized)<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSCSS"){
+				$$('#displayprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Computer Science (Straight)<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSEE"){
+				$$('#displayprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Elementary Education<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSM"){
+				$$('#displayprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Mathematics<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSMW"){
+				$$('#displayprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Midwifery<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSN"){
+				$$('#displayprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Nursing<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSP"){
+				$$('#displayprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Psychology<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSSE"){
+				$$('#displayprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Secondary Education<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else{
+				$$('#displayprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>'+datas[i].course+'<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}
+		
+		}
+		
+	},JSON);
+	
 })
 
 $$(document).on('pageAfterAnimation','.page[data-page="parenthome"]',function(e){
@@ -35,8 +80,8 @@ $$(document).on('pageAfterAnimation','.page[data-page="teacherhome"]',function(e
 
 function studentlogin(){
 	
-	 myApp.showPreloader();
-	 
+	myApp.showPreloader();
+	
 	 var uname = document.getElementById("studentusername").value;
      var pwd = document.getElementById("studentpassword").value;
 	
@@ -45,24 +90,25 @@ function studentlogin(){
 		
 		console.log(data);
 		if(parseInt(data)==0){
+			myApp.hidePreloader();
 			myApp.alert('Invalid Username or Password');
 		}else{
 			localStorage.setItem("studentprofile",JSON.stringify(datas));
 			var login = document.getElementById("studentsuccess");
 			login.click();
-
+			myApp.hidePreloader();
 		}
 		
 	},JSON);
 	
-	myApp.hidePreloader();
+	
 }
 
 
 
 function teacherlogin(){
 	
-	 //myApp.showPreloader();
+	myApp.showPreloader();
 	 
 	 var uname = document.getElementById("teacherusername").value;
      var pwd = document.getElementById("teacherpassword").value;
@@ -72,16 +118,18 @@ function teacherlogin(){
 		
 		console.log(data);
 		if(parseInt(data)==0){
+			myApp.hidePreloader();
 			myApp.alert('Invalid Username or Password');
 		}else{
 			localStorage.setItem("teacherprofile",JSON.stringify(datas));
 			var login = document.getElementById("teachersuccess");
 			login.click();
+			myApp.hidePreloader();
 		}
 		
 	},JSON);
 	
-	//myApp.hidePreloader();
+	
 }
 
 
@@ -98,70 +146,18 @@ function parentlogin(){
 		
 		console.log(data);
 		if(parseInt(data)==0){
+			myApp.hidePreloader();
 			myApp.alert('Invalid Username or Password');
 		}else{
 			localStorage.setItem("parentprofile",JSON.stringify(datas));
 			var login = document.getElementById("parentsuccess");
 			login.click();
+			myApp.hidePreloader();
 		}
 		
 	},JSON);
 	
-	myApp.hidePreloader();
-}
-
-
-
-
-function studentregister(){
-	 
-	 var dept = document.getElementById("studentdepartment").value;
-	 var crse = document.getElementById("studentcourse").value;
-	 var sname = document.getElementById("studentname").value;
-	 var id = document.getElementById("studentid").value;
-	 var y = document.getElementById("studentyear").value;
-	 var s = document.getElementById("studentsection").value;
-	 var contact = document.getElementById("studentcontactnumber").value;
-	 var uname = document.getElementById("studentusername").value;
-	 var pwd = document.getElementById("studentpassword").value;
-	 //var vcode = document.getElementById("studentvcode").value;
 	
-	if(dept == "" || crse == "" || sname == "" || id == "" || y == "" || s == "" || contact == "" || uname == "" || pwd == ""){
-	myApp.alert('<center><strong>Please fill all inputs</strong></center>');
-	}else{
-	$$.post(global_url, {action: 'registerstudent',department: dept, course: crse, name: sname, studentid: id, year: y, section: s, contactnumber: contact, username: uname, password: pwd}, function (data,status) {
-		
-		console.log(data);
-		myApp.alert('<center><strong>Registration Successful!</strong><br>Please login with your <strong>Username</strong> and <strong>password</strong>.</center>');
-		var register = document.getElementById("registerstudentsuccess");
-		register.click();
-		
-	},JSON);
-	}
-}
-
-
-function teacherregister(){
-
-	 var tname = document.getElementById("teachername").value;
-	 var id = document.getElementById("teacherid").value;
-	 var contact = document.getElementById("teachercontactnumber").value;
-	 var uname = document.getElementById("teacherusername").value;
-	 var pwd = document.getElementById("teacherpassword").value;
-	 //var vcode = document.getElementById("teachervcode").value;
-	
-	if(tname == "" || id == "" || contact == "" || uname == "" || pwd == ""){
-	myApp.alert('<center><strong>Please fill all inputs</strong></center>');
-	}else{
-	$$.post(global_url, {action: 'registerteacher',teachername: tname, teacherid: id, contactnumber: contact, username: uname, password: pwd}, function (data,status) {
-		
-		console.log(data);
-		myApp.alert('<center><strong>Registration Successful!</strong><br>Please login with your <strong>Username</strong> and <strong>password</strong>.</center>');
-		var register = document.getElementById("registerteachersuccess");
-		register.click();
-		
-	},JSON);
-	}
 }
 
 
@@ -171,7 +167,6 @@ function parentregister(){
 	 var contact = document.getElementById("parentcontactnumber").value;
 	 var uname = document.getElementById("parentusername").value;
 	 var pwd = document.getElementById("parentpassword").value;
-	 //var vcode = document.getElementById("teachervcode").value;
 	
 	if(pname == "" || contact == "" || uname == "" || pwd == ""){
 	myApp.alert('<center><strong>Please fill all inputs</strong></center>');
@@ -199,7 +194,6 @@ function showgrades(){
 		$$.post(global_url, {action: 'displaystudentgrades', studentid: sid, schoolyear: sy}, function (data,status) {
 			
 			document.getElementById('displaygrades').innerHTML="";
-			//document.getElementById('display_legend').innerHTML="";
 			console.log(data);
 			var datas = JSON.parse(data);
 			console.log(datas);
@@ -336,7 +330,7 @@ function enrollbycode(){
 
 
 function createsubject(){
-		
+	
 	function randomString(length, chars) {
 		    var result = '';
 		    for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
@@ -345,33 +339,39 @@ function createsubject(){
 
 	var gencode = randomString(6, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 	
+	 var scoursetitle = document.getElementById("coursetitle").value;
+	 var sunits = document.getElementById("units").value;
+	 var scoursetype = document.getElementById("coursetype").value;
+	 
 	 var stitle = document.getElementById("subjecttitle").value;
 	 var ssy = document.getElementById("subjectsy").value;
-	 var stg = document.getElementById("subjecttg").value;
 	 var sdept = document.getElementById("subjectdepartment").value;
 	 var scrse = document.getElementById("subjectcourse").value;
-	 var sys = document.getElementById("subjectys").value;
+	 var sy = document.getElementById("subjecty").value;
+	 var ss = document.getElementById("subjects").value;
 	 var scode = gencode;
 	
 	var teacherprofile = JSON.parse(localStorage.getItem("teacherprofile"));
 	var teachid = document.getElementById("teacher_id").value = teacherprofile.tid;
 	
-	if(stitle == "" || sys == ""){
-	myApp.alert('<center><strong>Please fill all inputs</strong></center>');
+	if(stitle == ""){
+	myApp.alert('<center><strong>Please select<br>subject title</strong></center>');
 	}else{
-	$$.post(global_url, {action: 'createsubject',subjecttitle: stitle, subjectsy: ssy, subjecttg: stg, subjectdept: sdept, subjectcourse: scrse, subjectys: sys, subjectcode: scode, teacherid: teachid}, function (data,status) {
+	$$.post(global_url, {action: 'createsubject',subjecttitle: stitle, subjectsy: ssy, subjectdept: sdept, subjectcourse: scrse, subjecty: sy, subjects: ss, subjectcode: scode, teacherid: teachid, coursetitle: scoursetitle, units: sunits, coursetype: scoursetype}, function (data,status) {
 		
 		console.log(data);
-		myApp.alert('<center><strong>Successfully Created Subject</strong><br>Subject Code: '+ gencode +'</center>');
+		myApp.alert('<center><strong>Successfully Created Subject</strong></center>');
+		//myApp.alert('<center><strong>Successfully Created Subject</strong><br>Subject Code: '+ gencode +'</center>');
 		var create = document.getElementById("createsubjectsuccess");
 		create.click();
-		
 	},JSON);
 	}
-	
 }
 
 $$(document).on('pageAfterAnimation','.page[data-page="teacherhome"]',function(e){
+	
+	//myApp.showPreloader();
+	
 	document.getElementById('displaySub').innerHTML = "";
 	var teacherprofile = JSON.parse(localStorage.getItem("teacherprofile"));
 	var teacherid = document.getElementById("teacher_id").value = teacherprofile.tid;
@@ -384,7 +384,11 @@ $$(document).on('pageAfterAnimation','.page[data-page="teacherhome"]',function(e
 		
 		for(var i = 0; i<datas.length; i++){
 			
-			$$('#displaySub').append('<li class="swipeout"><a href="pages/subjectchoose.html" onclick="passid('+datas[i].subjid+','+datas[i].schoolyear+');" class="item-link item-content swipeout-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].subjecttitle+'</div></div><div class="item-text">Subject Code: '+datas[i].subjectcode+'</div></div></a><div class="swipeout-actions-right"><a href="#" onclick="deletesubject('+datas[i].subjid+');" class="bg-red">Delete</a></div></li>');
+			$$('#displaySub').append('<li class="swipeout"><a href="pages/subjectchoose.html" onclick="passid('+datas[i].subjid+','+datas[i].schoolyear+');" class="item-link item-content swipeout-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after">'+datas[i].units+' unit/s</div></div><div class="item-subtitle">'+datas[i].coursetitle+'</div><div class="item-text">'+datas[i].coursetype+'</div></div></a><div class="swipeout-actions-right"><a href="#" onclick="deletesubject('+datas[i].subjid+');" class="bg-red">Delete</a><a href="pages/teacherhome.html" id="deletesuccess" style="display:none;">success</a></div></li>');
+			
+			//$$('#displayallcourses').append('<li><a href="#" onclick="getcourseid('+datas[i].courseid+')" class="back item-link item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].courseno+'</div><div class="item-after">'+datas[i].units+' (units)</div></div><div class="item-subtitle">'+datas[i].coursetitle+'</div><div class="item-text">'+datas[i].coursetype+'</div></div></a></li>');
+			
+			//$$('#displaySub').append('<li class="swipeout"><a href="pages/subjectchoose.html" onclick="passid('+datas[i].subjid+','+datas[i].schoolyear+');" class="item-link item-content swipeout-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].subjecttitle+'</div></div><div class="item-text">Subject Code: '+datas[i].subjectcode+'</div></div></a><div class="swipeout-actions-right"><a href="#" onclick="deletesubject('+datas[i].subjid+');" class="bg-red">Delete</a></div></li>');
 			
 			
 			///////////////////////////////SWIPE OUT CUSTOMIZED WITH FUNCTION////////////////////////////////
@@ -398,14 +402,12 @@ $$(document).on('pageAfterAnimation','.page[data-page="teacherhome"]',function(e
 			////////////////////////////////////ORIGINAL WITHOUT SWIPE OUT////////////////////////////////////////
 			//$$('#displaySub').append('<li><a href="pages/subjectchoose.html" onclick="passid('+datas[i].subjid+','+datas[i].schoolyear+');" class="item-link item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].subjecttitle+'</div></div><div class="item-text">Subject Code: '+datas[i].subjectcode+'</div></div></a></li>');
 		}
-		
+		//myApp.hidePreloader();
 	},JSON);
 	
 })
 
 function deletesubject(subjid){
-	
-	//myApp.alert(subjid);
 	
 	myApp.confirm('Are you sure you want to delete this subject? <strong>All data</strong> from this subject will be <strong>deleted</strong>.', function () {
 	
@@ -414,12 +416,10 @@ function deletesubject(subjid){
 			
 			console.log(data);
 			myApp.alert('<center><strong>Subject Deleted</strong></center>');
+			var deletesubj = document.getElementById("deletesuccess");
+			deletesubj.click();
 			
-		},JSON);
-		
-		//var deletesubj = document.getElementById("deletesuccess");
-		//deletesubj.click();
-		
+		},JSON);		
     });
 
 }
@@ -428,7 +428,11 @@ function passid(subjid,sy){
 	$$(document).on('pageAfterAnimation','.page[data-page="subjectchoose"]',function(e){
 	
 	document.getElementById('hiddenid').innerHTML = "";
-	$$('#hiddenid').append('<a href="pages/addstudent.html" class="button button-raised button-fill color-green" onclick="passidaddstudents('+subjid+','+sy+');">Add Students to Subject</a><br><a href="pages/enrollbycategory.html" class="button button-raised button-fill color-green" onclick="passidaddbycategory('+subjid+','+sy+');">Add Students by Categories</a><br><a href="pages/subjectstudents.html" class="button button-raised button-fill color-green" onclick="passidremovestudents('+subjid+');">Remove Students from Subject</a><br><a href="pages/enrolledstudents.html" class="button button-raised button-fill color-green" onclick="passidshowenrolled('+subjid+');">Show Enrolled Students</a>');
+	//$$('#hiddenid').append('<a href="pages/addstudent.html" class="button button-raised button-fill color-green" onclick="passidaddstudents('+subjid+','+sy+');">Add Students to Subject</a><br><a href="pages/enrollbycategory.html" class="button button-raised button-fill color-green" onclick="passidaddbycategory('+subjid+','+sy+');">Add Students by Categories</a><br><a href="pages/subjectstudents.html" class="button button-raised button-fill color-green" onclick="passidremovestudents('+subjid+');">Remove Students from Subject</a><br><a href="pages/enrolledstudents.html" class="button button-raised button-fill color-green" onclick="passidshowenrolled('+subjid+');">Show Enrolled Students</a>'
+	
+	$$('#hiddenid').append('<li><a href="pages/enrollbycategory.html" onclick="passidaddbycategory('+subjid+','+sy+');" class="item-link item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">Add Students by Categories</div></div></div></a></li><li><a href="pages/addstudent.html" onclick="passidaddstudents('+subjid+','+sy+');" class="item-link item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">Add Students to Subject</div></div></div></a></li><li><a href="pages/subjectstudents.html" onclick="passidremovestudents('+subjid+');" class="item-link item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">Remove Students from Subject</div></div></div></a></li><li><a href="pages/enrolledstudents.html" onclick="passidshowenrolled('+subjid+');" class="item-link item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">Show Enrolled Students</div></div></div></a></li>');
+	
+
 	
 	//////////////////////////////////WITH DELETE STUDENTS PAGE BUTTON////////////////////////////////////////
 	//$$('#hiddenid').append('<a href="pages/addstudent.html" class="button button-raised button-fill color-green" onclick="passidaddstudents('+subjid+','+sy+');">Add Students to Subject</a><br><a href="pages/enrollbycategory.html" class="button button-raised button-fill color-green" onclick="passidaddbycategory('+subjid+','+sy+');">Add Students by Categories</a><br><a href="pages/subjectstudents.html" class="button button-raised button-fill color-green" onclick="passidremovestudents('+subjid+');">Remove Students from Subject</a><br><a href="pages/enrolledstudents.html" class="button button-raised button-fill color-green" onclick="passidshowenrolled('+subjid+');">Show Enrolled Students</a><br><a href="pages/deletestudent.html" class="button button-raised button-fill color-green" onclick="passiddeletestudents();">Delete Student Accounts</a>');
@@ -440,7 +444,9 @@ function passid(subjid,sy){
 
 function passidaddstudents(subjid,sy){
 $$(document).on('pageAfterAnimation','.page[data-page="addstudent"]',function(e){
-
+	
+	myApp.showPreloader();
+	
 	$$.post(global_url, {action: 'displayStudents'}, function (data,status) {
 		
 		document.getElementById('displayStud').innerHTML="";
@@ -465,6 +471,9 @@ $$(document).on('pageAfterAnimation','.page[data-page="addstudent"]',function(e)
 										'</div>'+
 									  '</li>');
 		}
+	
+	myApp.hidePreloader();
+	
 	},JSON);
 })
 }
@@ -480,33 +489,33 @@ function showstudentprofile(sid){
 			for(var i = 0; i<datas.length; i++){
 			
 			if(datas[i].course == "BAT"){
-				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>Department: </strong>'+datas[i].department+'<br><strong>Course: </strong>Bachelor of Agricultural Technology<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
+				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>Bachelor of Agricultural Technology<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
 			}else if(datas[i].course == "BAE"){
-				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>Department: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.A. in English<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
+				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.A. in English<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
 			}else if(datas[i].course == "BAF"){
-				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>Department: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.A. in Filipino<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
+				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.A. in Filipino<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
 			}else if(datas[i].course == "BSA"){
-				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>Department: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Agriculture<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
+				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Agriculture<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
 			}else if(datas[i].course == "BSB"){
-				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>Department: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Biology<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
+				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Biology<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
 			}else if(datas[i].course == "BSCSL"){
-				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>Department: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Computer Science (Ladderized)<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
+				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Computer Science (Ladderized)<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
 			}else if(datas[i].course == "BSCSS"){
-				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>Department: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Computer Science (Straight)<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
+				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Computer Science (Straight)<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
 			}else if(datas[i].course == "BSEE"){
-				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>Department: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Elementary Education<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
+				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Elementary Education<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
 			}else if(datas[i].course == "BSM"){
-				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>Department: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Mathematics<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
+				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Mathematics<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
 			}else if(datas[i].course == "BSMW"){
-				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>Department: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Midwifery<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
+				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Midwifery<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
 			}else if(datas[i].course == "BSN"){
-				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>Department: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Nursing<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
+				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Nursing<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
 			}else if(datas[i].course == "BSP"){
-				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>Department: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Psychology<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
+				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Psychology<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
 			}else if(datas[i].course == "BSSE"){
-				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>Department: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Secondary Education<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
+				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Secondary Education<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
 			}else{
-				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>Department: </strong>'+datas[i].department+'<br><strong>Course: </strong>'+datas[i].course+'<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
+				myApp.alert('<center><strong>'+datas[i].name+'</strong></center><br><strong>ID Number: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>'+datas[i].course+'<br><strong>Year & Section: </strong>'+datas[i].year+''+datas[i].section+'<br><strong>Contact: </strong>'+datas[i].contactnumber+'');
 			}
 			}
 			
@@ -573,7 +582,9 @@ function addcategory(){
 
 function passidremovestudents(subjid){
 	$$(document).on('pageAfterAnimation','.page[data-page="subjectstudents"]',function(e){
-		
+	
+	myApp.showPreloader();
+	
 		$$.post(global_url, {action: 'displayenrolled', sub: subjid}, function (data,status) {
 		
 			document.getElementById('displayenrolled').innerHTML="";
@@ -584,7 +595,9 @@ function passidremovestudents(subjid){
 			
 			for(var i = 0; i<datas.length; i++){
 			$$('#displayenrolled').append('<li><a href="#" class="item-link item-content item-inner item-title" onclick="removestudent('+datas[i].studid+');">('+datas[i].year+''+datas[i].section+') '+datas[i].name+'</a></li>');
+			myApp.hidePreloader();
 			}
+			myApp.hidePreloader();
 		},JSON);	
 	})
 }
@@ -606,27 +619,38 @@ function removestudent(studentid){
 
 function passidshowenrolled(subjid){
 $$(document).on('pageAfterAnimation','.page[data-page="enrolledstudents"]',function(e){
-	//myApp.alert(subjid);
+	
+	myApp.showPreloader();
+	
 	$$.post(global_url, {action: 'displayenrolled', sub: subjid}, function (data,status) {
 		
 		document.getElementById('displayenrolled').innerHTML="";
+		document.getElementById('subject_title').innerHTML="";
 		console.log(data);
 		var datas = JSON.parse(data);
 		console.log(datas);
 		
 		for(var i = 0; i<datas.length; i++){
 			
+			document.getElementById('subject_title').innerHTML = datas[i].subjecttitle;
+			
 			if(datas[i].inc == 1){
 			
-			$$('#displayenrolled').append('<li class="swipeout"><div class="item-content swipeout-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">('+datas[i].year+''+datas[i].section+') '+datas[i].name+'</div></div><div class="item-text"><span class="badge color-bluegray">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-bluegray">Final - '+datas[i].finalgrade+'</span>&nbsp<span class="badge color-bluegray">Overall - INC</span></div></div></div><div class="swipeout-actions-left"><a href="pages/editgrades.html" onclick="shownameoneditgrade('+datas[i].studid+','+subjid+');" class="bg-green">Edit<br>Grade</a><a href="pages/inc.html" onclick="shownameoninc('+datas[i].studid+','+subjid+');" class="bg-bluegray">INC</a></div></li>');
+			$$('#displayenrolled').append('<li class="swipeout"><div class="item-content swipeout-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">('+datas[i].year+''+datas[i].section+') '+datas[i].name+'</div></div><div class="item-text"><span class="badge">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge">Final - '+datas[i].finalgrade+'</span>&nbsp<span class="badge color-bluegray">INCOMPLETE</span></div></div></div><div class="swipeout-actions-left"><a href="pages/editgrades.html" onclick="shownameoneditgrade('+datas[i].studid+','+subjid+');" class="bg-green">Edit<br>Grade</a><a href="pages/inc.html" onclick="shownameoninc('+datas[i].studid+','+subjid+');" class="bg-bluegray">INC</a></div></li>');
+			
+			}else if(datas[i].finalgrade == "" && datas[i].midtermgrade == ""){
+			
+			$$('#displayenrolled').append('<li class="swipeout"><div class="item-content swipeout-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">('+datas[i].year+''+datas[i].section+') '+datas[i].name+'</div></div><div class="item-text"><span class="badge color-bluegray">No grade yet</span></div></div></div><div class="swipeout-actions-left"><a href="pages/editgrades.html" onclick="shownameoneditgrade('+datas[i].studid+','+subjid+');" class="bg-green">Enter/Edit<br>Grade</a><a href="pages/inc.html" onclick="shownameoninc('+datas[i].studid+','+subjid+');" class="bg-bluegray">INC</a></div></li>');
 			
 			}else{
 			
-			$$('#displayenrolled').append('<li class="swipeout"><div class="item-content swipeout-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">('+datas[i].year+''+datas[i].section+') '+datas[i].name+'</div></div><div class="item-text"><span class="badge color-bluegray">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-bluegray">Final - '+datas[i].finalgrade+'</span>&nbsp<span class="badge color-green">Overall - '+datas[i].overall+'</span></div></div></div><div class="swipeout-actions-left"><a href="pages/editgrades.html" onclick="shownameoneditgrade('+datas[i].studid+','+subjid+');" class="bg-green">Edit<br>Grade</a><a href="pages/inc.html" onclick="shownameoninc('+datas[i].studid+','+subjid+');" class="bg-bluegray">INC</a></div></li>');
+			$$('#displayenrolled').append('<li class="swipeout"><div class="item-content swipeout-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">('+datas[i].year+''+datas[i].section+') '+datas[i].name+'</div></div><div class="item-text"><span class="badge color-bluegray">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final - '+datas[i].finalgrade+'</span></div></div></div><div class="swipeout-actions-left"><a href="pages/editgrades.html" onclick="shownameoneditgrade('+datas[i].studid+','+subjid+');" class="bg-green">Edit<br>Grade</a><a href="pages/inc.html" onclick="shownameoninc('+datas[i].studid+','+subjid+');" class="bg-bluegray">INC</a></div></li>');
 			
 			}
-			
+			myApp.hidePreloader();
 		}
+		
+		myApp.hidePreloader();
 	},JSON);
 })
 }
@@ -676,60 +700,22 @@ function updategrades(studentid,subjid){
 	
 	var fgrade = document.getElementById("finalgrade_input").value;
 	var mgrade = document.getElementById("midtermgrade_input").value;
-	var transmutation = document.getElementById("transmutation_id").value;
+	//var transmutation = document.getElementById("transmutation_id").value;
 	
 	if(mgrade == ""){
 	myApp.alert('<center><strong>Please input grade</strong></center>');
 	}else{
-	
-		if(transmutation == 1){
-			
-			var computation = +(fgrade*0.5) + +(mgrade*0.5);
-			var totalrounded = Math.round(computation);
-			
-			$$.post(global_url, {action: 'updategrade',overall: totalrounded, finalgrade: fgrade, midtermgrade: mgrade, studid: studentid, subjectid: subjid}, function (data) {
-				
-				console.log(data);
-				//var datas = JSON.parse(data);
-				//console.log(datas);
-				myApp.alert('<center><strong>Grades<br>Successfully Saved</strong></center>');
-				var success = document.getElementById("editsuccess");
-				success.click();
-				
-			},JSON);
 		
-		}else if(transmutation == 2){
+		$$.post(global_url, {action: 'updategrade', finalgrade: fgrade, midtermgrade: mgrade, studid: studentid, subjectid: subjid}, function (data) {
 			
-			var computation = +(fgrade*0.6) + +(mgrade*0.4);
-			var totalrounded = Math.round(computation);
+			console.log(data);
+			//var datas = JSON.parse(data);
+			//console.log(datas);
+			myApp.alert('<center><strong>Grades<br>Successfully Saved</strong></center>');
+			var success = document.getElementById("editsuccess");
+			success.click();
 			
-			$$.post(global_url, {action: 'updategrade',overall: totalrounded, finalgrade: fgrade, midtermgrade: mgrade, studid: studentid, subjectid: subjid}, function (data) {
-				
-				console.log(data);
-				//var datas = JSON.parse(data);
-				//console.log(datas);
-				myApp.alert('<center><strong>Grades<br>Successfully Saved</strong></center>');
-				var success = document.getElementById("editsuccess");
-				success.click();
-				
-			},JSON);
-		
-		}else{
-		
-			var computation = "";
-			
-			$$.post(global_url, {action: 'updategrade',overall: computation, finalgrade: fgrade, midtermgrade: mgrade, studid: studentid, subjectid: subjid}, function (data) {
-				
-				console.log(data);
-				//var datas = JSON.parse(data);
-				//console.log(datas);
-				myApp.alert('<center><strong>Grades<br>Successfully Saved</strong></center>');
-				var success = document.getElementById("editsuccess");
-				success.click();
-				
-			},JSON);
-		
-		}
+		},JSON);
 	}
 }
 
@@ -743,7 +729,7 @@ function updateinc(studentid,subjid){
 		console.log(data);
 		//var datas = JSON.parse(data);
 		//console.log(datas);
-		myApp.alert('<center><strong>Overall Grade Setting<br>Successfully Saved</strong></center>');
+		myApp.alert('<center><strong>Final Grade Setting<br>Successfully Saved</strong></center>');
 		var success = document.getElementById("editsuccess");
 		success.click();
 		
@@ -753,7 +739,9 @@ function updateinc(studentid,subjid){
 
 function passiddeletestudents(){
 $$(document).on('pageAfterAnimation','.page[data-page="deletestudent"]',function(e){
-
+	
+	myApp.showPreloader(); 
+	
 	$$.post(global_url, {action: 'displayStudents'}, function (data,status) {
 		
 		document.getElementById('displayStud').innerHTML="";
@@ -762,11 +750,13 @@ $$(document).on('pageAfterAnimation','.page[data-page="deletestudent"]',function
 		console.log(datas);
 		
 		for(var i = 0; i<datas.length; i++){
-			$$('#displayStud').append('<li><a href="#" onclick="deletestudent('+datas[i].studid+');" class="item-link item-content item-title item-inner">('+datas[i].year+''+datas[i].section+') '+datas[i].name+'</a></li>');
+			$$('#displayStud').append('<li><a href="#" onclick="deletestudent('+datas[i].studid+');" class="item-link item-content item-title item-inner">('+datas[i].studentid+') '+datas[i].name+'</a></li>');
 		}
+		myApp.hidePreloader();
 	},JSON);
 })
 }
+
 function deletestudent(studentid){
 
 	myApp.confirm('Delete this student account<br>from the system?', function () {
@@ -819,6 +809,8 @@ function firstresult(){
 	
 	$$(document).on('pageAfterAnimation','.page[data-page="parentsearch"]',function(e){
 	
+	myApp.showPreloader();
+	
 	$$.post(global_url, {action: 'displayresult', studentid: idinput}, function (data,status) {
 		
 		document.getElementById('displayresult').innerHTML="";
@@ -829,81 +821,82 @@ function firstresult(){
 		console.log(data);
 		
 		if(parseInt(data)==0){
-		
 		$$('#displayresultblank').append('<p>Sorry, there is no record of a student with this ID Number in the system.</p>');
-		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="#" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue" disabled>Proceed</a></p></div>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="#" onclick="secondresult('+datas.studid+')" class="button button-fill color-green" disabled>Proceed</a></p></div>');
 		
 		}else if(datas.course == "BAT"){
 		
-		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>Bachelor of Agricultural Technology<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
-		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>College: </strong>'+datas.department+'<br><strong>Course: </strong>Bachelor of Agricultural Technology<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-green">Proceed</a></p></div>');
 		
 		}else if(datas.course == "BAE"){
 		
-		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.A. in English<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
-		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>College: </strong>'+datas.department+'<br><strong>Course: </strong>B.A. in English<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-green">Proceed</a></p></div>');
 		
 		}else if(datas.course == "BAF"){
 		
-		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.A. in Filipino<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
-		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>College: </strong>'+datas.department+'<br><strong>Course: </strong>B.A. in Filipino<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-green">Proceed</a></p></div>');
 		
 		}else if(datas.course == "BSA"){
 		
-		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Agriculture<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
-		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>College: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Agriculture<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-green">Proceed</a></p></div>');
 		
 		}else if(datas.course == "BSB"){
 		
-		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Biology<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
-		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>College: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Biology<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-green">Proceed</a></p></div>');
 		
 		}else if(datas.course == "BSCSL"){
 		
-		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Computer Science (Ladderized)<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
-		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>College: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Computer Science (Ladderized)<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-green">Proceed</a></p></div>');
 		
 		}else if(datas.course == "BSCSS"){
 		
-		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Computer Science (Straight)<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
-		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>College: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Computer Science (Straight)<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-green">Proceed</a></p></div>');
 		
 		}else if(datas.course == "BSEE"){
 		
-		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Elementary Education<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
-		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>College: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Elementary Education<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-green">Proceed</a></p></div>');
 		
 		}else if(datas.course == "BSM"){
 		
-		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Mathematics<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
-		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>College: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Mathematics<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-green">Proceed</a></p></div>');
 		
 		}else if(datas.course == "BSMW"){
 		
-		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Midwifery<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
-		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>College: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Midwifery<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-green">Proceed</a></p></div>');
 		
 		}else if(datas.course == "BSN"){
 		
-		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Nursing<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
-		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>College: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Nursing<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-green">Proceed</a></p></div>');
 		
 		}else if(datas.course == "BSP"){
 		
-		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Psychology<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
-		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>College: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Psychology<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-green">Proceed</a></p></div>');
 		
 		}else if(datas.course == "BSSE"){
 		
-		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Secondary Education<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
-		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>College: </strong>'+datas.department+'<br><strong>Course: </strong>B.S. Secondary Education<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-green">Proceed</a></p></div>');
 		
 		}else{
 		
-		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>Department: </strong>'+datas.department+'<br><strong>Course: </strong>'+datas.course+'<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
-		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-blue">Proceed</a></p></div>');
+		$$('#displayresult').append('<p><strong>Name: </strong>'+datas.name+'<br><strong>College: </strong>'+datas.department+'<br><strong>Course: </strong>'+datas.course+'<br><strong>Year and Section: </strong>'+datas.year+''+datas.section+'</p>');
+		$$('#displayproceed').append('<div class="content-block"><p class="buttons-row"><a href="pages/parentresult.html" onclick="secondresult('+datas.studid+')" class="button button-fill color-green">Proceed</a></p></div>');
 		
 		}
+		
+		myApp.hidePreloader();
 		
 	},JSON);
 	
@@ -916,11 +909,11 @@ function secondresult(studid){
 	
 	$$(document).on('pageAfterAnimation','.page[data-page="parentresult"]',function(e){
 	
+	myApp.showPreloader();
+	
 	$$.post(global_url, {action: 'displayfinalresult', schoolyear: syinput, studentid: studid}, function (data,status) {
 		
 		document.getElementById('display_studentgrades').innerHTML="";
-		//document.getElementById('display_studentinfo').innerHTML="";
-		//document.getElementById('display_legend').innerHTML="";
 		
 		console.log(data);
 		var datas = JSON.parse(data);
@@ -929,8 +922,51 @@ function secondresult(studid){
 		for(var i = 0; i<datas.length; i++){
 		
 		if(datas[i].inc == 1){
-				
-		$$('#display_studentgrades').append('<div class="list-block"><div class="list-group"><ul><li><strong><div class="item-content item-divider"><div class="item-inner"><div class="item-title">'+datas[i].subjecttitle+'</div><div class="item-after"> <span class="badge color-bluegray"><p style="margin-top: -17%;">INCOMPLETE</p></span></div></div></div></strong></li><li><div class="item-content"><div class="item-inner"><div class="item-title">Teacher: <strong>'+datas[i].teachername+'</strong></div></div></div></li></ul></div><br></div>');
+		
+		
+		if(datas[i].inc == 1){
+				$$('#display_studentgrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].subjecttitle+'</div></div><div class="item-text">Teacher: '+datas[i].teachername+'<br><span class="badge color-bluegray">INCOMPLETE</span></div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 98 && datas[i].finalgrade <= 100){	
+				$$('#display_studentgrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].subjecttitle+'</div></div><div class="item-text">Teacher: '+datas[i].teachername+'<br><span class="badge color-bluegray">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.00 - '+datas[i].finalgrade+'</span></div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 95 && datas[i].finalgrade <= 97){
+				$$('#display_studentgrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].subjecttitle+'</div></div><div class="item-text">Teacher: '+datas[i].teachername+'<br><span class="badge color-bluegray">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.25 - '+datas[i].finalgrade+'</span></div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 92 && datas[i].finalgrade <= 94){
+				$$('#display_studentgrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].subjecttitle+'</div></div><div class="item-text">Teacher: '+datas[i].teachername+'<br><span class="badge color-bluegray">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.50 - '+datas[i].finalgrade+'</span></div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 89 && datas[i].finalgrade <= 91){
+				$$('#display_studentgrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].subjecttitle+'</div></div><div class="item-text">Teacher: '+datas[i].teachername+'<br><span class="badge color-bluegray">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.75 - '+datas[i].finalgrade+'</span></div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 86 && datas[i].finalgrade <= 88){
+				$$('#display_studentgrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].subjecttitle+'</div></div><div class="item-text">Teacher: '+datas[i].teachername+'<br><span class="badge color-bluegray">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.00 - '+datas[i].finalgrade+'</span></div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 83 && datas[i].finalgrade <= 85){
+				$$('#display_studentgrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].subjecttitle+'</div></div><div class="item-text">Teacher: '+datas[i].teachername+'<br><span class="badge color-bluegray">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.25 - '+datas[i].finalgrade+'</span></div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 80 && datas[i].finalgrade <= 82){
+				$$('#display_studentgrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].subjecttitle+'</div></div><div class="item-text">Teacher: '+datas[i].teachername+'<br><span class="badge color-bluegray">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.50 - '+datas[i].finalgrade+'</span></div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 77 && datas[i].finalgrade <= 79){
+				$$('#display_studentgrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].subjecttitle+'</div></div><div class="item-text">Teacher: '+datas[i].teachername+'<br><span class="badge color-bluegray">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.75 - '+datas[i].finalgrade+'</span></div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 75 && datas[i].finalgrade <= 76){
+				$$('#display_studentgrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].subjecttitle+'</div></div><div class="item-text">Teacher: '+datas[i].teachername+'<br><span class="badge color-bluegray">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-orange">Final: 3.00 - '+datas[i].finalgrade+'</span></div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 74){
+				$$('#display_studentgrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].subjecttitle+'</div></div><div class="item-text">Teacher: '+datas[i].teachername+'<br><span class="badge color-bluegray">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-red">Final: 5.00 - '+datas[i].finalgrade+'</span></div></div></div></li>');
+			
+			}else if(datas[i].finalgrade == "" && datas[i].midtermgrade == ""){
+				$$('#display_studentgrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].subjecttitle+'</div></div><div class="item-text">Teacher: '+datas[i].teachername+'<br><span class="badge color-bluegray">No grade yet</span></div></div></div></li>');
+			
+			}else{
+		
+				$$('#display_studentgrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].subjecttitle+'</div></div><div class="item-text">Teacher: '+datas[i].teachername+'<br><span class="badge color-bluegray">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-bluegray">Final - '+datas[i].finalgrade+'</span></div></div></div></li>');
+			}
+		
+		
+		/*$$('#display_studentgrades').append('<div class="list-block"><div class="list-group"><ul><li><strong><div class="item-content item-divider"><div class="item-inner"><div class="item-title">'+datas[i].subjecttitle+'</div><div class="item-after"> <span class="badge color-bluegray"><p style="margin-top: -17%;">INCOMPLETE</p></span></div></div></div></strong></li><li><div class="item-content"><div class="item-inner"><div class="item-title">Teacher: <strong>'+datas[i].teachername+'</strong></div></div></div></li></ul></div><br></div>');
 		
 		}else if(datas[i].overall == ""){
 		
@@ -938,12 +974,14 @@ function secondresult(studid){
 		
 		}else{
 		
-		$$('#display_studentgrades').append('<div class="list-block"><div class="list-group"><ul><li><strong><div class="item-content item-divider"><div class="item-inner"><div class="item-title">'+datas[i].subjecttitle+'</div><div class="item-after"> <span class="badge color-green"><p style="margin-top: -19%;">'+datas[i].overall+'</p></span></div></div></div></strong></li><li><div class="item-content"><div class="item-inner"><div class="item-title">Teacher: <strong>'+datas[i].teachername+'</strong></div></div></div></li><li><div class="item-content"><div class="item-inner"><div class="item-title">Midterm Grade:</div><div class="item-after"> <span class="badge color-bluegray">'+datas[i].midtermgrade+'</span></div></div></div></li><li><div class="item-content"><div class="item-inner"><div class="item-title">Final Grade:</div><div class="item-after"> <span class="badge color-bluegray">'+datas[i].finalgrade+'</span></div></div></div></li></ul></div><br></div>');
+		$$('#display_studentgrades').append('<div class="list-block"><div class="list-group"><ul><li><strong><div class="item-content item-divider"><div class="item-inner"><div class="item-title">'+datas[i].subjecttitle+'</div><div class="item-after"> <span class="badge color-green"><p style="margin-top: -19%;">'+datas[i].overall+'</p></span></div></div></div></strong></li><li><div class="item-content"><div class="item-inner"><div class="item-title">Teacher: <strong>'+datas[i].teachername+'</strong></div></div></div></li><li><div class="item-content"><div class="item-inner"><div class="item-title">Midterm Grade:</div><div class="item-after"> <span class="badge color-bluegray">'+datas[i].midtermgrade+'</span></div></div></div></li><li><div class="item-content"><div class="item-inner"><div class="item-title">Final Grade:</div><div class="item-after"> <span class="badge color-bluegray">'+datas[i].finalgrade+'</span></div></div></div></li></ul></div><br></div>');*/
 		
 		//$$('#display_studentgrades').append('<div class="list-block"><div class="list-group"><ul><li><strong><div class="item-content item-divider"><div class="item-inner"><div class="item-title">'+datas[i].subjecttitle+'</div><div class="item-after"> <span class="badge color-bluegray">'+datas[i].overall+'</span></div></div></div></strong></li><li><div class="item-content"><div class="item-inner"><div class="item-title">Midterm Grade</div><div class="item-after"> <span class="badge color-bluegray">'+datas[i].midtermgrade+'</span></div></div></div></li><li><div class="item-content"><div class="item-inner"><div class="item-title">Final Grade</div><div class="item-after"> <span class="badge color-bluegray">'+datas[i].finalgrade+'</span></div></div></div></li></ul></div><br></div>');
 		}
 		
 		}
+		
+		myApp.hidePreloader();
 		
 	},JSON);
 	
@@ -990,8 +1028,7 @@ function studentrenewinfo(){
 	var studentprof = localStorage.getItem("studentprofile");
 	var student = JSON.parse(studentprof);
 	var sid = student.studid;
-	
-	var stid = document.getElementById("studentidinput").value;
+
 	var scontact = document.getElementById("contactinput").value;
 	var sname = document.getElementById("nameinput").value;
 	var suname = document.getElementById("usernameinput").value;
@@ -1001,7 +1038,7 @@ function studentrenewinfo(){
 	var syear = document.getElementById("studentyear").value;
 	var ssec = document.getElementById("studentsection").value;
 	
-	$$.post(global_url, {action: 'studentrenewinfo',studid: sid, studentid: stid, contact: scontact, name: sname, username: suname, password: spassword, department: sdept, course: scrse, year: syear, section: ssec}, function (data) {
+	$$.post(global_url, {action: 'studentrenewinfo',studid: sid, contact: scontact, name: sname, username: suname, password: spassword, department: sdept, course: scrse, year: syear, section: ssec}, function (data) {
 		
 		console.log(data);
 		myApp.alert('<center><strong>Account Successfully<br>Updated</strong></center>');
@@ -1018,7 +1055,6 @@ function studentsetting(){
 	var student = JSON.parse(studentprof);
 	var sid = student.studid;
 	
-	var studid = student.studentid;
 	var sname = student.name;
 	var sdept = student.department;
 	var scrse = student.course;
@@ -1028,7 +1064,6 @@ function studentsetting(){
 	var suname = student.username;
 	var spassword = student.password; 
 	
-	document.getElementById("studentidinput").value = studid;
 	document.getElementById("contactinput").value = scontact;
 	document.getElementById("nameinput").value = sname;
 	document.getElementById("usernameinput").value = suname;
@@ -1048,18 +1083,16 @@ function teacherrenewinfo(){
 	var teacher = JSON.parse(teacherprof);
 	var teaid = teacher.tid;
 	
-	var teachid = document.getElementById("teacheridinput").value;
+	//var teachid = document.getElementById("teacheridinput").value;
 	var tcontact = document.getElementById("contactinput").value;
 	var tname = document.getElementById("nameinput").value;
 	var tuname = document.getElementById("usernameinput").value;
 	var tpassword = document.getElementById("passwordinput").value;
 	
-	$$.post(global_url, {action: 'teacherrenewinfo',tid: teaid, teacherid: teachid, contactnumber: tcontact, teachername: tname, username: tuname, password: tpassword}, function (data) {
+	$$.post(global_url, {action: 'teacherrenewinfo',tid: teaid, contactnumber: tcontact, teachername: tname, username: tuname, password: tpassword}, function (data) {
 		
 		console.log(data);
 		myApp.alert('<center><strong>Account Successfully<br>Updated</strong></center>');
-		//var success = document.getElementById("updatesuccess");
-		//success.click();
 		
 	},JSON);
 	
@@ -1073,13 +1106,13 @@ function teachersetting(){
 	var teacher = JSON.parse(teacherprof);
 	var tid = teacher.teacherid;
 	
-	var teachid = teacher.teacherid;
+	//var teachid = teacher.teacherid;
 	var tname = teacher.teachername;
 	var tcontact = teacher.contactnumber;
 	var tuname = teacher.username;
 	var tpassword = teacher.password; 
 	
-	document.getElementById("teacheridinput").value = teachid;
+	//document.getElementById("teacheridinput").value = teachid;
 	document.getElementById("contactinput").value = tcontact;
 	document.getElementById("nameinput").value = tname;
 	document.getElementById("usernameinput").value = tuname;
@@ -1104,8 +1137,6 @@ function parentrenewinfo(){
 		
 		console.log(data);
 		myApp.alert('<center><strong>Account Successfully<br>Updated</strong></center>');
-		//var success = document.getElementById("updatesuccess");
-		//success.click();
 		
 	},JSON);
 	
@@ -1132,10 +1163,803 @@ function parentsetting(){
     })
 }
 
+function teacherpreregister(){
+
+	 var id = document.getElementById("registeridnumber").value;
+	
+	$$.post(global_url, {action: 'registerfindtid', idnumber: id}, function (data) {
+		
+		document.getElementById('register_form').innerHTML = "";
+		console.log(data);
+		
+		if (data == 1){
+		$$('#register_form').append('<div class="list-block input-list">'+
+									  '<ul>'+
+									  '<li><div class="item-content item-inner item-title item-divider"><center>Registeration Form</center></div></li>'+
+										'<li>'+
+										  '<div class="item-content">'+
+											'<div class="item-inner">'+
+											  '<div class="item-title floating-label">Full Name:</div>'+
+											  '<div class="item-input">'+
+												'<input type="text" placeholder="" id="teachername"/>'+
+											  '</div>'+
+											'</div>'+
+										  '</div>'+
+										'</li>'+
+										'<li>'+
+										  '<div class="item-content">'+
+											'<div class="item-inner">'+
+											  '<div class="item-title floating-label">Contact:</div>'+
+											  '<div class="item-input">'+
+												'<input type="text" placeholder="" id="teachercontactnumber"/>'+
+											  '</div>'+
+											'</div>'+
+										  '</div>'+
+										'</li>'+
+										'<li>'+
+										  '<div class="item-content">'+
+											'<div class="item-inner">'+
+											  '<div class="item-title floating-label">Username:</div>'+
+											  '<div class="item-input">'+
+												'<input type="text" placeholder="" id="teacherusername"/>'+
+											  '</div>'+
+											'</div>'+
+										  '</div>'+
+										'</li>'+
+										'<li>'+
+										  '<div class="item-content">'+
+											'<div class="item-inner">'+
+											  '<div class="item-title floating-label">Password:</div>'+
+											  '<div class="item-input">'+
+												'<input type="password" placeholder="" id="teacherpassword"/>'+
+											  '</div>'+
+											'</div>'+
+										  '</div>'+
+										'</li>'+
+									  '</ul>'+
+									'</div>'+
+		'<div class="content-block"><p class="buttons-row">'+
+			'<a href="#" class="button button-raised back link">Discard</a>'+
+			'<a href="index.html" id="registerteachersuccess" style="display:none;">success</a>'+
+			'<a onclick="teacherregister();" class="button button-raised button-fill color-green">Register</a>'+
+		'</p></div>');
+		}else if (data == 0){
+		myApp.alert('<center class="color-deeporange">Sorry you are not yet registered in the system. Please consult <br>the School Registrar.<center>');
+		}
+		
+	},JSON);
+}
+
+function teacherregister(){
+
+	 var tname = document.getElementById("teachername").value;
+	 var id = document.getElementById("registeridnumber").value;
+	 var contact = document.getElementById("teachercontactnumber").value;
+	 var uname = document.getElementById("teacherusername").value;
+	 var pwd = document.getElementById("teacherpassword").value;
+	
+	if(tname == "" || id == "" || contact == "" || uname == "" || pwd == ""){
+	myApp.alert('<center><strong>Please fill all inputs</strong></center>');
+	}else{
+	$$.post(global_url, {action: 'registerteacher',teachername: tname, teacherid: id, contactnumber: contact, username: uname, password: pwd}, function (data,status) {
+		
+		console.log(data);
+		
+		if(data == 1){
+			myApp.alert('<center><strong>Registration Successful!</strong><br>Please login with your <strong>Username</strong> and <strong>password</strong>.</center>');
+			var register = document.getElementById("registerteachersuccess");
+			register.click();
+		}else{
+			myApp.alert('<center><strong>Sorry</strong><br>This account already exists in<br>the system. Please report this <br>issue to the System Admin</center>');
+		}
+		
+	},JSON);
+	}
+}
+
+function studentpreregister(){
+
+	 var id = document.getElementById("registeridnumber").value;
+	
+	$$.post(global_url, {action: 'registerfindid', idnumber: id}, function (data) {
+		
+		document.getElementById('register_form').innerHTML = "";
+		console.log(data);
+		
+		if (data == 1){
+		$$('#register_form').append('<div class="list-block input-list">'+
+									  '<ul>'+
+									  '<li><div class="item-content item-inner item-title item-divider"><center>Registeration Form</center></div></li>'+
+										'<li><a href="#" class="item-link smart-select">'+
+											'<select name="department" id="studentdepartment">'+
+											  '<option value="CE" selected="selected">CE</option>'+
+											  '<option value="CAS">CAS</option>'+
+											  '<option value="CCS">CCS</option>'+
+											  '<option value="ICHAMS">ICHAMS</option>'+
+											  '<option value="IA">IA</option>'+
+											  '<option value="IF">IF</option>'+
+											'</select>'+
+											'<div class="item-content">'+
+											  '<div class="item-inner">'+
+												'<div class="item-title">College:</div>'+
+											  '</div>'+
+											'</div></a></li>'+
+										'<li><a href="#" class="item-link smart-select">'+
+											'<select name="course" id="studentcourse">'+
+											  '<option value="BAT" selected="selected">Bachelor of Agricultural Technology</option>'+
+											  '<option value="BAE">B.A. in English</option>'+
+											  '<option value="BAF">B.A. in Filipino</option>'+
+											  '<option value="BSA">B.S. Agriculture</option>'+
+											  '<option value="BSB">B.S. Biology</option>'+
+											  '<option value="BSCSL">B.S. Computer Science (Ladderized)</option>'+
+											  '<option value="BSCSS">B.S. Computer Science (Straight)</option>'+
+											  '<option value="BSEE">B.S. Elementary Education</option>'+
+											  '<option value="BSM">B.S. Mathematics</option>'+
+											  '<option value="BSMW">B.S. Midwifery</option>'+
+											  '<option value="BSN">B.S. Nursing</option>'+
+											  '<option value="BSP">B.S. Psychology</option>'+
+											  '<option value="BSSE">B.S. Secondary Education</option>'+
+											'</select>'+
+											'<div class="item-content">'+
+											  '<div class="item-inner">'+
+												'<div class="item-title">Course:</div>'+
+											  '</div>'+
+											'</div></a></li>'+
+										'<li><a href="#" class="item-link smart-select">'+
+											'<select name="y" id="studentyear">'+
+											  '<option value="I" selected="selected">I</option>'+
+											  '<option value="II">II</option>'+
+											  '<option value="III">III</option>'+
+											  '<option value="IV">IV</option>'+
+											  '<option value="1">1</option>'+
+											  '<option value="2">2</option>'+
+											  '<option value="3">3</option>'+
+											  '<option value="4">4</option>'+
+											'</select>'+
+											'<div class="item-content">'+
+											  '<div class="item-inner">'+
+												'<div class="item-title">Year:</div>'+
+											  '</div>'+
+											'</div></a></li>'+
+										'<li><a href="#" class="item-link smart-select">'+
+											'<select name="s" id="studentsection">'+
+											  '<option value="A" selected="selected">A</option>'+
+											  '<option value="B">B</option>'+
+											  '<option value="C">C</option>'+
+											  '<option value="D">D</option>'+
+											  '<option value="E">E</option>'+
+											  '<option value="F">F</option>'+
+											  '<option value="G">G</option>'+
+											  '<option value="H">H</option>'+
+											  '<option value="I">I</option>'+
+											  '<option value="J">J</option>'+
+											  '<option value="1">1</option>'+
+											  '<option value="2">2</option>'+
+											  '<option value="3">3</option>'+
+											  '<option value="4">4</option>'+
+											  '<option value="5">5</option>'+
+											  '<option value="6">6</option>'+
+											  '<option value="7">7</option>'+
+											  '<option value="8">8</option>'+
+											  '<option value="9">9</option>'+
+											'</select>'+
+											'<div class="item-content">'+
+											  '<div class="item-inner">'+
+												'<div class="item-title">Section:</div>'+
+											  '</div>'+
+											'</div></a></li>'+
+										'<li>'+
+										  '<div class="item-content">'+
+											'<div class="item-inner">'+
+											  '<div class="item-title floating-label">Full Name:</div>'+
+											  '<div class="item-input">'+
+												'<input type="text" placeholder="" id="studentname"/>'+
+											  '</div>'+
+											'</div>'+
+										  '</div>'+
+										'</li>'+
+										'<li>'+
+										  '<div class="item-content">'+
+											'<div class="item-inner">'+
+											  '<div class="item-title floating-label">Contact:</div>'+
+											  '<div class="item-input">'+
+												'<input type="text" placeholder="" id="studentcontactnumber"/>'+
+											  '</div>'+
+											'</div>'+
+										  '</div>'+
+										'</li>'+
+										'<li>'+
+										  '<div class="item-content">'+
+											'<div class="item-inner">'+
+											  '<div class="item-title floating-label">Username:</div>'+
+											  '<div class="item-input">'+
+												'<input type="text" placeholder="" id="studentusername"/>'+
+											  '</div>'+
+											'</div>'+
+										  '</div>'+
+										'</li>'+
+										'<li>'+
+										  '<div class="item-content">'+
+											'<div class="item-inner">'+
+											  '<div class="item-title floating-label">Password:</div>'+
+											  '<div class="item-input">'+
+												'<input type="password" placeholder="" id="studentpassword"/>'+
+											  '</div>'+
+											'</div>'+
+										  '</div>'+
+										'</li>'+
+									  '</ul>'+
+									'</div>'+
+		'<div class="content-block"><p class="buttons-row">'+
+			'<a href="#" class="button button-raised back link">Discard</a>'+
+			'<a href="index.html" id="registerstudentsuccess" style="display:none;">success</a>'+
+			'<a onclick="studentregister();" class="button button-raised button-fill color-green">Register</a>'+
+		'</p></div>');
+		}else if (data == 0){
+		myApp.alert('<center class="color-deeporange">Sorry you are not yet enrolled in the system. Please consult <br>your Adviser.<center>');
+		}
+		
+	},JSON);
+}
+
+function registerusernamepassword(){
+	
+	var sid = document.getElementById("registeridnumber").value;
+	var sdept = document.getElementById("studentdepartment").value;
+	var suname = document.getElementById("registerusername").value;
+	var spass = document.getElementById("registerpassword").value;
+
+	$$.post(global_url, {action: 'registerusernamepassword', studentid: sid, username: suname, password: spass}, function (data) {
+		
+		console.log(data);
+		myApp.alert('<center><strong>Registration Successful!</strong><br>Please login with your <strong>Username</strong> and <strong>password</strong>.</center>');
+		var success = document.getElementById("registerstudentsuccess");
+		success.click();
+		
+	},JSON);
+	
+}
+
+function studentregister(){
+	 
+	 var dept = document.getElementById("studentdepartment").value;
+	 var crse = document.getElementById("studentcourse").value;
+	 var sname = document.getElementById("studentname").value;
+	 var id = document.getElementById("registeridnumber").value;
+	 var y = document.getElementById("studentyear").value;
+	 var s = document.getElementById("studentsection").value;
+	 var contact = document.getElementById("studentcontactnumber").value;
+	 var uname = document.getElementById("studentusername").value;
+	 var pwd = document.getElementById("studentpassword").value;
+	 //var vcode = document.getElementById("studentvcode").value;
+	
+	if(dept == "" || crse == "" || sname == "" || id == "" || y == "" || s == "" || contact == "" || uname == "" || pwd == ""){
+	myApp.alert('<center><strong>Please fill all inputs</strong></center>');
+	}else{
+	$$.post(global_url, {action: 'registerstudent',department: dept, course: crse, name: sname, studentid: id, year: y, section: s, contactnumber: contact, username: uname, password: pwd}, function (data,status) {
+		
+		console.log(data);
+		
+		if(data == 1){
+			myApp.alert('<center><strong>Registration Successful!</strong><br>Please login with your <strong>Username</strong> and <strong>password</strong>.</center>');
+			var register = document.getElementById("registerstudentsuccess");
+			register.click();
+		}else{
+			myApp.alert('<center><strong>Sorry</strong><br>This account already exists in<br>the system. Please report this <br>issue to your adviser</center>');
+		}
+		
+		
+		
+	},JSON);
+	}
+}
+
+
+
+////////////////////////////////////////////////////NEW CODE//////////////////////////////////////////////////
+////////////////////////////////////////////////////NEW CODE//////////////////////////////////////////////////
+////////////////////////////////////////////////////NEW CODE//////////////////////////////////////////////////
+////////////////////////////////////////////////////NEW CODE//////////////////////////////////////////////////
+////////////////////////////////////////////////////NEW CODE//////////////////////////////////////////////////
+
+
+$$(document).on('pageAfterAnimation','.page[data-page="studenthome"]',function(e){
+	var studentprofile = JSON.parse(localStorage.getItem("studentprofile"));
+	document.getElementById("student_name").innerHTML = studentprofile.name;
+	var studid = studentprofile.studid;
+	
+	myApp.showPreloader();
+	
+	$$.post(global_url, {action: 'displaygradeathome',studentid: studid}, function (data) {
+		
+		document.getElementById('displaygrades').innerHTML="";
+		console.log(data);
+		var datas = JSON.parse(data);
+		console.log(datas);
+			
+		for(var i = 0; i<datas.length; i++){
+			
+			if(datas[i].inc == 1){
+				$$('#displaygrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">INCOMPLETE</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 98 && datas[i].finalgrade <= 100){	
+				$$('#displaygrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 95 && datas[i].finalgrade <= 97){
+				$$('#displaygrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.25 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 92 && datas[i].finalgrade <= 94){
+				$$('#displaygrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.50 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 89 && datas[i].finalgrade <= 91){
+				$$('#displaygrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.75 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 86 && datas[i].finalgrade <= 88){
+				$$('#displaygrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+			}else if(datas[i].finalgrade >= 83 && datas[i].finalgrade <= 85){
+				$$('#displaygrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.25 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 80 && datas[i].finalgrade <= 82){
+				$$('#displaygrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.50 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 77 && datas[i].finalgrade <= 79){
+				$$('#displaygrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.75 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 75 && datas[i].finalgrade <= 76){
+				$$('#displaygrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-orange">Final: 3.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 74){
+				$$('#displaygrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-red">Final: 5.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade == "" && datas[i].midtermgrade == ""){
+				$$('#displaygrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge">No grade yet</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else{
+				$$('#displaygrades').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge">Final: 0</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			}
+		}
+		
+		myApp.hidePreloader();
+		
+	},JSON);
+	
+})
+
+$$(document).on('pageAfterAnimation','.page[data-page="sortbyletter"]',function(e){
+	var studentprofile = JSON.parse(localStorage.getItem("studentprofile"));
+	document.getElementById("studentname").innerHTML = studentprofile.name;
+	var studid = studentprofile.studid;
+	
+	myApp.showPreloader();
+	
+	$$.post(global_url, {action: 'sortbyletter',studentid: studid}, function (data) {
+		
+		document.getElementById('sortbyletter').innerHTML="";
+		console.log(data);
+		var datas = JSON.parse(data);
+		console.log(datas);
+			
+		for(var i = 0; i<datas.length; i++){
+			
+			if(datas[i].inc == 1){
+				$$('#sortbyletter').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">INCOMPLETE</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 98 && datas[i].finalgrade <= 100){	
+				$$('#sortbyletter').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 95 && datas[i].finalgrade <= 97){
+				$$('#sortbyletter').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.25 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 92 && datas[i].finalgrade <= 94){
+				$$('#sortbyletter').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.50 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 89 && datas[i].finalgrade <= 91){
+				$$('#sortbyletter').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.75 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 86 && datas[i].finalgrade <= 88){
+				$$('#sortbyletter').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+			}else if(datas[i].finalgrade >= 83 && datas[i].finalgrade <= 85){
+				$$('#sortbyletter').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.25 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 80 && datas[i].finalgrade <= 82){
+				$$('#sortbyletter').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.50 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 77 && datas[i].finalgrade <= 79){
+				$$('#sortbyletter').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.75 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 75 && datas[i].finalgrade <= 76){
+				$$('#sortbyletter').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-orange">Final: 3.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade >= 74){
+				$$('#sortbyletter').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-red">Final: 5.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else if(datas[i].finalgrade == "" && datas[i].midtermgrade == ""){
+				$$('#sortbyletter').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge">No grade yet</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			
+			}else{
+				$$('#sortbyletter').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge">Final: 0</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+			}
+		}
+		
+		myApp.hidePreloader();
+		
+	},JSON);
+	
+	
+	
+	$$.post(global_url, {action: 'studentprofile',studentid: studid}, function (data) {
+		
+		document.getElementById('display_profile').innerHTML="";
+		console.log(data);
+		var datas = JSON.parse(data);
+		console.log(datas);
+			
+		for(var i = 0; i<datas.length; i++){
+		
+			if(datas[i].course == "BAT"){
+				$$('#display_profile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>Bachelor of Agricultural Technology<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BAE"){
+				$$('#display_profile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.A. in English<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BAF"){
+				$$('#display_profile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.A. in Filipino<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSA"){
+				$$('#display_profile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Agriculture<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSB"){
+				$$('#display_profile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Biology<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSCSL"){
+				$$('#display_profile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Computer Science (Ladderized)<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSCSS"){
+				$$('#display_profile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Computer Science (Straight)<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSEE"){
+				$$('#display_profile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Elementary Education<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSM"){
+				$$('#display_profile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Mathematics<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSMW"){
+				$$('#display_profile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Midwifery<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSN"){
+				$$('#display_profile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Nursing<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSP"){
+				$$('#display_profile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Psychology<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSSE"){
+				$$('#display_profile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Secondary Education<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else{
+				$$('#display_profile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>'+datas[i].course+'<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}
+		
+		}
+		
+	},JSON);
+	
+})
+
+
+$$(document).on('pageAfterAnimation','.page[data-page="sortbysy"]',function(e){
+	var studentprofile = JSON.parse(localStorage.getItem("studentprofile"));
+	document.getElementById("student_fullname").innerHTML = studentprofile.name;
+	var studid = studentprofile.studid;
+	
+	myApp.showPreloader();
+	
+	$$.post(global_url, {action: 'displaygradeathome',studentid: studid}, function (data) {
+		
+		document.getElementById('displaygrades1617').innerHTML="";
+		document.getElementById('displaygrades1718').innerHTML="";
+		document.getElementById('displaygrades1819').innerHTML="";
+		console.log(data);
+		var datas = JSON.parse(data);
+		console.log(datas);
+			
+		for(var i = 0; i<datas.length; i++){
+		
+			if(datas[i].schoolyear == 1617){
+		
+				if(datas[i].inc == 1){
+					$$('#displaygrades1617').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">INCOMPLETE</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 98 && datas[i].finalgrade <= 100){	
+					$$('#displaygrades1617').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 95 && datas[i].finalgrade <= 97){
+					$$('#displaygrades1617').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.25 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 92 && datas[i].finalgrade <= 94){
+					$$('#displaygrades1617').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.50 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 89 && datas[i].finalgrade <= 91){
+					$$('#displaygrades1617').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.75 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 86 && datas[i].finalgrade <= 88){
+					$$('#displaygrades1617').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+					
+				}else if(datas[i].finalgrade >= 83 && datas[i].finalgrade <= 85){
+					$$('#displaygrades1617').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.25 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 80 && datas[i].finalgrade <= 82){
+					$$('#displaygrades1617').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.50 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 77 && datas[i].finalgrade <= 79){
+					$$('#displaygrades1617').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.75 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 75 && datas[i].finalgrade <= 76){
+					$$('#displaygrades1617').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-orange">Final: 3.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 74){
+					$$('#displaygrades1617').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-red">Final: 5.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade == "" && datas[i].midtermgrade == ""){
+					$$('#displaygrades1617').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge">No grade yet</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else{
+					$$('#displaygrades1617').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge">Final: 0</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				}
+			}else if(datas[i].schoolyear == 1718){
+				
+				if(datas[i].inc == 1){
+					$$('#displaygrades1718').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">INCOMPLETE</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 98 && datas[i].finalgrade <= 100){	
+					$$('#displaygrades1718').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 95 && datas[i].finalgrade <= 97){
+					$$('#displaygrades1718').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.25 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 92 && datas[i].finalgrade <= 94){
+					$$('#displaygrades1718').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.50 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 89 && datas[i].finalgrade <= 91){
+					$$('#displaygrades1718').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.75 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 86 && datas[i].finalgrade <= 88){
+					$$('#displaygrades1718').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+					
+				}else if(datas[i].finalgrade >= 83 && datas[i].finalgrade <= 85){
+					$$('#displaygrades1718').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.25 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 80 && datas[i].finalgrade <= 82){
+					$$('#displaygrades1718').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.50 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 77 && datas[i].finalgrade <= 79){
+					$$('#displaygrades1718').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.75 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 75 && datas[i].finalgrade <= 76){
+					$$('#displaygrades1718').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-orange">Final: 3.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 74){
+					$$('#displaygrades1718').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-red">Final: 5.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade == "" && datas[i].midtermgrade == ""){
+					$$('#displaygrades1718').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge">No grade yet</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else{
+					$$('#displaygrades1718').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge">Final: 0</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				}
+			}else{
+				
+				if(datas[i].inc == 1){
+					$$('#displaygrades1819').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">INCOMPLETE</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 98 && datas[i].finalgrade <= 100){	
+					$$('#displaygrades1819').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 95 && datas[i].finalgrade <= 97){
+					$$('#displaygrades1819').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.25 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 92 && datas[i].finalgrade <= 94){
+					$$('#displaygrades1819').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.50 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 89 && datas[i].finalgrade <= 91){
+					$$('#displaygrades1819').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final: 1.75 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 86 && datas[i].finalgrade <= 88){
+					$$('#displaygrades1819').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+					
+				}else if(datas[i].finalgrade >= 83 && datas[i].finalgrade <= 85){
+					$$('#displaygrades1819').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.25 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 80 && datas[i].finalgrade <= 82){
+					$$('#displaygrades1819').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.50 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 77 && datas[i].finalgrade <= 79){
+					$$('#displaygrades1819').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-blue">Final: 2.75 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 75 && datas[i].finalgrade <= 76){
+					$$('#displaygrades1819').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-orange">Final: 3.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade >= 74){
+					$$('#displaygrades1819').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-red">Final: 5.00 - '+datas[i].finalgrade+'</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else if(datas[i].finalgrade == "" && datas[i].midtermgrade == ""){
+					$$('#displaygrades1819').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge">No grade yet</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				
+				}else{
+					$$('#displaygrades1819').append('<li><div class="item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title"><strong>'+datas[i].subjecttitle+'</strong></div><div class="item-after"><span class="badge color-bluegray">Midterm: '+datas[i].midtermgrade+'</span>&nbsp<span class="badge">Final: 0</span></div></div><div class="item-text"><strong>('+datas[i].coursetype+') '+datas[i].coursetitle+'</strong><br>Teacher: '+datas[i].teachername+'</div></div></div></li>');
+				}
+				
+			}
+		}
+		
+		myApp.hidePreloader();
+		
+	},JSON);
+	
+	
+	
+	$$.post(global_url, {action: 'studentprofile',studentid: studid}, function (data) {
+		
+		document.getElementById('display_studprofile').innerHTML="";
+		console.log(data);
+		var datas = JSON.parse(data);
+		console.log(datas);
+			
+		for(var i = 0; i<datas.length; i++){
+		
+			if(datas[i].course == "BAT"){
+				$$('#display_studprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>Bachelor of Agricultural Technology<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BAE"){
+				$$('#display_studprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.A. in English<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BAF"){
+				$$('#display_studprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.A. in Filipino<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSA"){
+				$$('#display_studprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Agriculture<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSB"){
+				$$('#display_studprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Biology<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSCSL"){
+				$$('#display_studprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Computer Science (Ladderized)<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSCSS"){
+				$$('#display_studprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Computer Science (Straight)<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSEE"){
+				$$('#display_studprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Elementary Education<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSM"){
+				$$('#display_studprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Mathematics<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSMW"){
+				$$('#display_studprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Midwifery<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSN"){
+				$$('#display_studprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Nursing<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSP"){
+				$$('#display_studprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Psychology<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else if(datas[i].course == "BSSE"){
+				$$('#display_studprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>B.S. Secondary Education<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}else{
+				$$('#display_studprofile').append('<div class="card-header"><strong>'+datas[i].name+'</strong></div><div class="card-content"><div class="card-content-inner"><p><strong>ID: </strong>'+datas[i].studentid+'<br><strong>College: </strong>'+datas[i].department+'<br><strong>Course: </strong>'+datas[i].course+'<br><strong>Year and Section: </strong>'+datas[i].year+''+datas[i].section+'</p></div></div>');
+			}
+		
+		}
+		
+	},JSON);
+	
+})
+
+
+function textmessage(){
+  var contactnumber = "09070275733";
+  var message= "hi";
+      $$.ajax({
+		url: 'http://gateway.onewaysms.ph:10001/api.aspx',
+		beforeSend: function (request) {
+		request.setRequestHeader("Authorization", "Negotiate");
+	  },
+		async: true,
+		dataType: "jsonp",
+			data: {apiusername:"APINTJ0GF12MD", apipassword:"APINTJ0GF12MDNTJ0G",senderid:"info",mobileno: contactnumber ,message:message},
+			success: function(response) {
+			console.log(response);
+			}
+		});
+	  alert("Message Sent!");
+}
+
+function generatecode(){
+	
+	function randomString(length, chars) {
+		var result = '';
+		for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
+		return result;
+	}
+	
+	var gencode = randomString(6, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+	var code = gencode;
+	
+	$$.post(global_url, {action: 'generatecode',textcode: code}, function (data) {
+			
+			console.log(data);
+			if(data == 0){
+			myApp.alert('<center><strong>Something went wrong, Try again.</strong></center>');
+			}else{
+			myApp.alert('<center><strong>Please wait for the text message containing a special code. Input this code on the blank space below.</strong></center>');
+			}
+			
+		},JSON);
+}
 
 
 
 
+////////////////////////////////////////////////UNDONE/////////////////////////////////////////////////////
+  
+$$(document).on('pageAfterAnimation','.page[data-page="coursetitle"]',function(e){
+	
+	myApp.showPreloader(); 
+	
+	$$.post(global_url, {action: 'displayallcourses'}, function (data,status) {
+		
+		document.getElementById('displayallcourses').innerHTML="";
+		console.log(data);
+		var datas = JSON.parse(data);
+		console.log(datas);
+		
+		for(var i = 0; i<datas.length; i++){
+			$$('#displayallcourses').append('<li><a href="#" onclick="getcourseid('+datas[i].courseid+')" class="back item-link item-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">'+datas[i].courseno+'</div><div class="item-after">'+datas[i].units+' unit/s</div></div><div class="item-subtitle">'+datas[i].coursetitle+'</div><div class="item-text">'+datas[i].coursetype+'</div></div></a></li>');
+		}
+		myApp.hidePreloader();
+	},JSON);
+	
+})
+
+function getcourseid(chosencourseid){
+	$$(document).on('pageAfterAnimation','.page[data-page="createsubject"]',function(e){
+	
+	$$.post(global_url, {action: 'chosentitle', courseid: chosencourseid}, function (data,status) {
+		
+		document.getElementById('chosentitle').innerHTML="";
+		document.getElementById('hiddeninputs').innerHTML="";
+		
+		console.log(data);
+		var datas = JSON.parse(data);
+		console.log(datas);
+		
+		for(var i = 0; i<datas.length; i++){
+			$$('#chosentitle').append('<div class="item-after">'+datas[i].courseno+' ('+datas[i].units+') - '+datas[i].coursetitle+'<br>'+datas[i].coursetype+'</div>');
+			$$('#hiddeninputs').append('<input type="hidden" id="subjecttitle" value="'+datas[i].courseno+'">'+
+									   '<input type="hidden" id="coursetitle" value="'+datas[i].coursetitle+'">'+
+									   '<input type="hidden" id="units" value="'+datas[i].units+'">'+
+									   '<input type="hidden" id="coursetype" value="'+datas[i].coursetype+'">');
+		}
+	},JSON);
+	
+	})
+}
+
+function check_session(){
+	var studentprofile = JSON.parse(localStorage.getItem("studentprofile"));
+	var teacherprofile = JSON.parse(localStorage.getItem("teacherprofile"));
+	var parentprofile = JSON.parse(localStorage.getItem("parentprofile"));
+	var studentid = studentprofile.studid;
+	var teacherid = teacherprofile.tid;
+	var parentid = parentprofile.pid;
+	
+	if(studentid == "" && teacherid == "" && parentid == ""){
+		//go to login
+	}else{
+		//go to home
+		if(studentid != ""){
+			var login = document.getElementById("studentsuccess");
+			login.click();
+		}else if(teacherid != ""){
+			var login = document.getElementById("teachersuccess");
+			login.click();
+		}else{
+			var login = document.getElementById("parentsuccess");
+			login.click();
+		}
+		
+	}
+	
+}
+
+//*/
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

@@ -2,10 +2,10 @@
     
     <widget xmlns   = "http://www.w3.org/ns/widgets"
         xmlns:gap   = "http://phonegap.com/ns/1.0"
-        id          = "com.slucparent.sample"
+        id          = "com.slucgradeinquiry.sample"
         versionCode = "1" 
         version     = "1.0.0" >
-        <name>Grade Inquiry SLUC - Parent</name>
+        <name>Grade Inquiry SLUC</name>
         <description>
             Grade Inquiry
         </description>

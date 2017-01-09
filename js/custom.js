@@ -1,6 +1,7 @@
 /* ===== variables === */
 var global_url = "http://ccsmygrade.com/m_grading/functions.php";
 var global_url2 = "http://ccsmygrade.com/ccsgiweb/m/functions.php";
+var global_url3 = "http://ccsmygrade.com/ccsgiweb/m/sendsms.php";
 var currentsem= "";
 
 function getstudentname(data){
@@ -68,7 +69,7 @@ $$(document).on('pageAfterAnimation','.page[data-page="studenthome"]',function(e
 
 $$(document).on('pageAfterAnimation','.page[data-page="parenthome"]',function(e){
 	var parentprofile = JSON.parse(localStorage.getItem("parentprofile"));
-	document.getElementById("parent_name").innerHTML = parentprofile.parentname;
+	document.getElementById("theparent_name").innerHTML = parentprofile.parentname;
 	//alert("test");
 })
 
@@ -1832,25 +1833,9 @@ $$(document).on('pageAfterAnimation','.page[data-page="sortbysy"]',function(e){
 })
 
 
-function textmessage(){
-  var contactnumber = "09070275733";
-  var message= "hi";
-      $$.ajax({
-		url: 'http://gateway.onewaysms.ph:10001/api.aspx',
-		beforeSend: function (request) {
-		request.setRequestHeader("Authorization", "Negotiate");
-	  },
-		async: true,
-		dataType: "jsonp",
-			data: {apiusername:"APINTJ0GF12MD", apipassword:"APINTJ0GF12MDNTJ0G",senderid:"info",mobileno: contactnumber ,message:message},
-			success: function(response) {
-			console.log(response);
-			}
-		});
-	  alert("Message Sent!");
-}
-
 function generatecode(){
+	
+	myApp.alert('<center><strong>Please wait for a text message<br>that contains a special code<br>which you will input on <br>this page.</strong></center>');
 	
 	function randomString(length, chars) {
 		var result = '';
@@ -1860,17 +1845,15 @@ function generatecode(){
 	
 	var gencode = randomString(6, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
 	var code = gencode;
-	
-	$$.post(global_url, {action: 'generatecode',textcode: code}, function (data) {
+	var parentprofile = JSON.parse(localStorage.getItem("parentprofile"));
+	var parentid = parentprofile.pid;
+
+	$$.post(global_url, {action: 'generatecode',textcode: code, pid: parentid}, function (data) {
 			
 			console.log(data);
-			if(data == 0){
-			myApp.alert('<center><strong>Something went wrong, Try again.</strong></center>');
-			}else{
-			myApp.alert('<center><strong>Please wait for the text message containing a special code. Input this code on the blank space below.</strong></center>');
-			}
 			
 		},JSON);
+
 }
 
 
@@ -1946,6 +1929,38 @@ function check_session(){
 		
 	}
 	
+}
+
+
+function verifyCode(){
+	var codetext = document.getElementById("verCode").value;
+	//myApp.alert(codetext);
+	
+	myApp.showPreloader();
+	
+	$$.post(global_url, {action: 'verifyCode',textcode: codetext}, function (data) {
+			
+			console.log(data);
+			//var data1 = JSON.parse(data);
+			if(data == 1){
+
+				$$('#vDislay').append('<div class="content-block-title"><strong>Click the button below to proceed:<strong></div>'+
+										'<div class="list-block input-list">'+
+											'<ul>'+
+												'<li>'+
+													'<a href="pages/parenthome.html"  class="button button-fill color-green">Proceed</a>'+
+												'</li>'+
+											'</ul>'+
+										'</div>');
+				myApp.hidePreloader();			
+			
+			}else{
+				myApp.hidePreloader();
+				myApp.alert('<center><strong>Invalid Code</strong></center>');
+			}
+			
+		},JSON);
+
 }
 
 //*/

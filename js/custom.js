@@ -637,7 +637,7 @@ $$(document).on('pageAfterAnimation','.page[data-page="enrolledstudents"]',funct
 			
 			if(datas[i].inc == 1){
 			
-			$$('#displayenrolled').append('<li class="swipeout"><div class="item-content swipeout-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">('+datas[i].year+''+datas[i].section+') '+datas[i].name+'</div></div><div class="item-text"><span class="badge">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge">Final - '+datas[i].finalgrade+'</span>&nbsp<span class="badge color-bluegray">INCOMPLETE</span></div></div></div><div class="swipeout-actions-left"><a href="pages/editgrades.html" onclick="shownameoneditgrade('+datas[i].studid+','+subjid+');" class="bg-green">Edit<br>Grade</a><a href="pages/inc.html" onclick="shownameoninc('+datas[i].studid+','+subjid+');" class="bg-bluegray">INC</a></div></li>');
+			$$('#displayenrolled').append('<li class="swipeout"><div class="item-content swipeout-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">('+datas[i].year+''+datas[i].section+') '+datas[i].name+'</div></div><div class="item-text"><span class="badge">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge">Final - '+datas[i].finalgrade+'</span>&nbsp<span class="badge color-bluegray">INCOMPLETE</span></div></div></div><div class="swipeout-actions-left"><a href="pages/editgrades.html" onclick="shownameoneditgrade('+datas[i].studid+','+subjid+');" class="bg-green">Enter/Edit<br>Grade</a><a href="pages/inc.html" onclick="shownameoninc('+datas[i].studid+','+subjid+');" class="bg-bluegray">INC</a></div></li>');
 			
 			}else if(datas[i].finalgrade == "" && datas[i].midtermgrade == ""){
 			
@@ -645,7 +645,7 @@ $$(document).on('pageAfterAnimation','.page[data-page="enrolledstudents"]',funct
 			
 			}else{
 			
-			$$('#displayenrolled').append('<li class="swipeout"><div class="item-content swipeout-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">('+datas[i].year+''+datas[i].section+') '+datas[i].name+'</div></div><div class="item-text"><span class="badge color-bluegray">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final - '+datas[i].finalgrade+'</span></div></div></div><div class="swipeout-actions-left"><a href="pages/editgrades.html" onclick="shownameoneditgrade('+datas[i].studid+','+subjid+');" class="bg-green">Edit<br>Grade</a><a href="pages/inc.html" onclick="shownameoninc('+datas[i].studid+','+subjid+');" class="bg-bluegray">INC</a></div></li>');
+			$$('#displayenrolled').append('<li class="swipeout"><div class="item-content swipeout-content"><div class="item-inner"><div class="item-title-row"><div class="item-title">('+datas[i].year+''+datas[i].section+') '+datas[i].name+'</div></div><div class="item-text"><span class="badge color-bluegray">Midterm - '+datas[i].midtermgrade+'</span>&nbsp<span class="badge color-green">Final - '+datas[i].finalgrade+'</span></div></div></div><div class="swipeout-actions-left"><a href="pages/editgrades.html" onclick="shownameoneditgrade('+datas[i].studid+','+subjid+');" class="bg-green">Enter/Edit<br>Grade</a><a href="pages/inc.html" onclick="shownameoninc('+datas[i].studid+','+subjid+');" class="bg-bluegray">INC</a></div></li>');
 			
 			}
 			myApp.hidePreloader();
@@ -1908,25 +1908,30 @@ function check_session(){
 	var studentprofile = JSON.parse(localStorage.getItem("studentprofile"));
 	var teacherprofile = JSON.parse(localStorage.getItem("teacherprofile"));
 	var parentprofile = JSON.parse(localStorage.getItem("parentprofile"));
-	var studentid = studentprofile.studid;
-	var teacherid = teacherprofile.tid;
-	var parentid = parentprofile.pid;
 	
-	if(studentid == "" && teacherid == "" && parentid == ""){
-		//go to login
+	console.log(studentprofile);
+	console.log(teacherprofile);
+	console.log(parentprofile);
+	
+	if (studentprofile == null && teacherprofile == null && parentprofile == null){
+		//do nothing
 	}else{
-		//go to home
-		if(studentid != ""){
+		
+		if(studentprofile!=null){
+			//myApp.alert('<center><strong>May laman</strong></center>');
 			var login = document.getElementById("studentsuccess");
 			login.click();
-		}else if(teacherid != ""){
+		}
+		if(teacherprofile!=null){
+			//myApp.alert('<center><strong>May laman</strong></center>');
 			var login = document.getElementById("teachersuccess");
 			login.click();
-		}else{
+		}
+		if(parentprofile!=null){
+			//myApp.alert('<center><strong>May laman</strong></center>');
 			var login = document.getElementById("parentsuccess");
 			login.click();
 		}
-		
 	}
 	
 }
